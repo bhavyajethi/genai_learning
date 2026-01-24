@@ -30,4 +30,4 @@ S-Pen support is unique and useful
 Review by Bhavya Jethi
 """)
 
-print(result['name'])
+print(result)
