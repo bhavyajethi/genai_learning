@@ -5,6 +5,9 @@ from pydantic import BaseModel, Field
 
 load_dotenv()
 model = ChatGoogleGenerativeAI(model = "gemini-2.5-flash")
+
+# We use BaseModel from Pydantic
+# This creates a real runtime object, not just a type hint
 class Review(BaseModel):
     themes: list[str] = Field(description = "List all the key themes discusses in the review in a list")
     summary: str = Field(description = "Write a summary of the review")
