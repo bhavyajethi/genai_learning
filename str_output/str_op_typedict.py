@@ -17,6 +17,9 @@ class Review(TypedDict):
 
     # No runtime validation here, just a hint for structure
     summary: Annotated[str, "Write a summary of the review"]
+
+    # Literal here is only for typing + prompt guidance
+    # If LLM returns something else, no error will happen
     sentiment: Annotated[Literal["pos", "neg"], "Return a sentiment of the review from either positive or negative"]
     pros: Annotated[Optional[list[str]], "List all the pros of the review in a list"]
     cons: Annotated[Optional[list[str]], "List all the cons of the review in a list"]
