@@ -9,6 +9,12 @@ model = ChatGoogleGenerativeAI(model = "gemini-2.5-flash")
 # It does NOT validate anything at runtime
 
 class Review(TypedDict):
+
+    # Annotated is used to attach extra metadata (description)
+    # Because TypedDict has no Field(...) like Pydantic
+    # LangChain reads this text to guide the LLM
+
+    
     themes: Annotated[list[str], "List all the key themes discusses in the review in a list"]
     summary: Annotated[str, "Write a summary of the review"]
     sentiment: Annotated[Literal["pos", "neg"], "Return a sentiment of the review from either positive or negative"]
