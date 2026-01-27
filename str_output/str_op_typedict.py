@@ -25,6 +25,8 @@ class Review(TypedDict):
     # Optional means key can be missing or None
     # But no runtime check is done
     pros: Annotated[Optional[list[str]], "List all the pros of the review in a list"]
+
+    # Same here, no validation
     cons: Annotated[Optional[list[str]], "List all the cons of the review in a list"]
     name: Annotated[Optional[str], "Write the name of the reviewer of the summary"]
 
