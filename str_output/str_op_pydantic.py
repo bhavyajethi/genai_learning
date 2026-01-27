@@ -9,6 +9,8 @@ model = ChatGoogleGenerativeAI(model = "gemini-2.5-flash")
 # We use BaseModel from Pydantic
 # This creates a real runtime object, not just a type hint
 class Review(BaseModel):
+    # Pydantic reads this type and will VALIDATE it at runtime
+    # If LLM returns something else, it will throw an error
     themes: list[str] = Field(description = "List all the key themes discusses in the review in a list")
     summary: str = Field(description = "Write a summary of the review")
     sentiment: Literal["pos", "neg"] = Field(description = "Return a sentiment of the review from either positive or negative")
