@@ -26,6 +26,8 @@ class Review(BaseModel):
 
     # Same as above, validated at runtime
     cons: Optional[list[str]] = Field(description ="List all the cons of the review in a list")
+
+    # Optional string, runtime validation happens
     name: Optional[str] = Field(description = "Write the name of the reviewer of the summary")
 
 
