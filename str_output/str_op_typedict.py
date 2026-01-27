@@ -53,4 +53,5 @@ S-Pen support is unique and useful
 Review by Bhavya Jethi
 """)
 
+# Access like a normal dict
 print(result['name'])
