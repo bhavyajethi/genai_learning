@@ -12,6 +12,8 @@ class Review(BaseModel):
     # Pydantic reads this type and will VALIDATE it at runtime
     # If LLM returns something else, it will throw an error
     themes: list[str] = Field(description = "List all the key themes discusses in the review in a list")
+
+    # Normal string field, must be a string or it fails
     summary: str = Field(description = "Write a summary of the review")
     sentiment: Literal["pos", "neg"] = Field(description = "Return a sentiment of the review from either positive or negative")
     pros: Optional[list[str]] = Field(description="List all the pros of the review in a list")
