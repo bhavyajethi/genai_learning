@@ -19,6 +19,9 @@ class Review(BaseModel):
     # Literal means only "pos" or "neg" are allowed
     # If model returns anything else, validation error comes
     sentiment: Literal["pos", "neg"] = Field(description = "Return a sentiment of the review from either positive or negative")
+
+    # Optional means it can be missing or None
+    # Pydantic still checks if it's a list of strings if present
     pros: Optional[list[str]] = Field(description="List all the pros of the review in a list")
     cons: Optional[list[str]] = Field(description ="List all the cons of the review in a list")
     name: Optional[str] = Field(description = "Write the name of the reviewer of the summary")
