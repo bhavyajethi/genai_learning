@@ -4,6 +4,10 @@ from typing import Optional, TypedDict, Annotated, Literal
 
 load_dotenv()
 model = ChatGoogleGenerativeAI(model = "gemini-2.5-flash")
+
+# TypedDict is only a TYPE HINT, not a real runtime object
+# It does NOT validate anything at runtime
+
 class Review(TypedDict):
     themes: Annotated[list[str], "List all the key themes discusses in the review in a list"]
     summary: Annotated[str, "Write a summary of the review"]
