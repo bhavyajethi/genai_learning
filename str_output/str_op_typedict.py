@@ -21,6 +21,9 @@ class Review(TypedDict):
     # Literal here is only for typing + prompt guidance
     # If LLM returns something else, no error will happen
     sentiment: Annotated[Literal["pos", "neg"], "Return a sentiment of the review from either positive or negative"]
+
+    # Optional means key can be missing or None
+    # But no runtime check is done
     pros: Annotated[Optional[list[str]], "List all the pros of the review in a list"]
     cons: Annotated[Optional[list[str]], "List all the cons of the review in a list"]
     name: Annotated[Optional[str], "Write the name of the reviewer of the summary"]
