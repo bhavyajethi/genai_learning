@@ -28,6 +28,8 @@ class Review(TypedDict):
 
     # Same here, no validation
     cons: Annotated[Optional[list[str]], "List all the cons of the review in a list"]
+
+    # Just a typing hint + description
     name: Annotated[Optional[str], "Write the name of the reviewer of the summary"]
 
 structured_model = model.with_structured_output(Review)
