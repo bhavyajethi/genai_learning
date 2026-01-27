@@ -51,4 +51,7 @@ S-Pen support is unique and useful
 Review by Bhavya Jethi
 """)
 
+
+# If the LLM returns wrong types or missing required fields,
+# Pydantic will throw an error here
 print(result)
