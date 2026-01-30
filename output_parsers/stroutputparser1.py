@@ -1,15 +1,12 @@
-from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
-llm = HuggingFaceEndpoint(
-    repo_id="",
-    task="text-generation"
-)
-
-model = ChatHuggingFace(llm=llm)
+# OpenAI requires a paid plan to access their API, so this a just a placeholder and these exists no api key for this model.
+model = ChatOpenAI()
 
 # 1st prompt -> detailed report
 template1 = PromptTemplate(
@@ -23,12 +20,10 @@ template2 = PromptTemplate(
     input_variables=['text']
 )
 
-prompt1 = template1.invoke({'topic':'black hole'})
+parser = StrOutputParser()
 
-result = model.invoke(prompt1)
+chain = template1 | model | parser | template2 | model | parser
 
-prompt2 = template2.invoke({'text':result.content})
+result = chain.invoke({'topic':'black hole'})
 
-result1 = model.invoke(prompt2)
-
-print(result1.content)
+print(result)
