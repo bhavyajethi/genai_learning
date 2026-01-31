@@ -9,7 +9,7 @@ load_dotenv()
 
 llm = HuggingFaceEndpoint(
     repo_id="mistralai/Mistral-7B-Instruct-v0.2",
-    task="text-generation",
+    task="text-generation"
 )
 
 
@@ -41,24 +41,91 @@ print(result1.content)
 
 
 
-# CODE WORKFLOW
-# User topic
+# Start Program
 #    ↓
-# PromptTemplate #1
+# load_dotenv()
 #    ↓
-# "Write a report on black hole"
+# .env file
 #    ↓
-# Model call #1
+# HUGGINGFACEHUB_API_TOKEN loaded into os.environ
 #    ↓
-# Detailed report
+# ────────────────────────────────────────
 #    ↓
-# PromptTemplate #2
+# HuggingFaceEndpoint created
+# (repo_id = mistralai/Mistral-7B-Instruct-v0.2)
 #    ↓
-# "Summarize this text"
+# (No API call yet — config only)
 #    ↓
-# Model call #2
+# ────────────────────────────────────────
 #    ↓
-# 5-line summary
+# ChatHuggingFace wrapper created
 #    ↓
-# Print
- 
+# LLM ready to accept prompts
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# PromptTemplate #1 created
+# ("Write a detailed report on {topic}")
+#    ↓
+# PromptTemplate #2 created
+# ("Write a 5 line summary on {text}")
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# template1.invoke({"topic": "black hole"})
+#    ↓
+# Prompt #1 formatted
+# "Write a detailed report on black hole"
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# model.invoke(prompt1)
+#    ↓
+# ChatHuggingFace.invoke()
+#    ↓
+# HuggingFaceEndpoint.invoke()
+#    ↓
+# HTTP POST request
+#    ↓
+# Hugging Face Inference API
+#    ↓
+# mistralai/Mistral-7B-Instruct-v0.2
+#    ↓
+# Text generation (Detailed Report)
+#    ↓
+# LangChain wraps output → AIMessage
+#    ↓
+# result.content (long report)
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# template2.invoke({"text": result.content})
+#    ↓
+# Prompt #2 formatted
+# "Write a 5 line summary on the following text..."
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# model.invoke(prompt2)
+#    ↓
+# ChatHuggingFace.invoke()
+#    ↓
+# HuggingFaceEndpoint.invoke()
+#    ↓
+# HTTP POST request
+#    ↓
+# Hugging Face Inference API
+#    ↓
+# mistralai/Mistral-7B-Instruct-v0.2
+#    ↓
+# Text generation (5-line summary)
+#    ↓
+# LangChain wraps output → AIMessage
+#    ↓
+# result1.content
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# print(result1.content)
+#    ↓
+# End Program

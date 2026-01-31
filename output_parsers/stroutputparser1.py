@@ -27,3 +27,45 @@ chain = template1 | model | parser | template2 | model | parser
 result = chain.invoke({'topic':'black hole'})
 
 print(result)
+
+
+# Start Program
+#    ↓
+# load_dotenv()
+#    ↓
+# .env file
+#    ↓
+# OPENAI_API_KEY loaded into os.environ
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# ChatOpenAI() instantiated
+#    ↓
+# (OpenAI client configured — NO API CALL YET)
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# PromptTemplate #1 created
+# "Write a detailed report on {topic}"
+#    ↓
+# PromptTemplate #2 created
+# "Write a 5 line summary on the following text"
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# StrOutputParser created
+#    ↓
+# (Used to convert AIMessage → string)
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# LCEL Chain constructed using `|`
+# (template1 | model | parser | template2 | model | parser)
+#    ↓
+# (NO execution yet — just a pipeline definition)
+#    ↓
+# ────────────────────────────────────────
+#    ↓
+# chain.invoke({"topic": "black hole"})
+#    ↓
+# Execution starts HERE ⬇️
