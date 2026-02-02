@@ -24,6 +24,8 @@ result = chain.invoke({'topic':'football'})
 
 print("This is the stroutput parser result", result)
 
+chain.get_graph().print_ascii()
+
 
 
 # the below code uses StructuredOutputParser
@@ -47,3 +49,5 @@ print("This is the stroutput parser result", result)
 # result = chain.invoke({"topic":"black hole"})
 
 # print("This result is of structured output parser", result)
+
+# chain.get_graph().print_ascii()
