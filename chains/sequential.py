@@ -24,3 +24,54 @@ chain = prompt1 | model | parser | prompt2 | model | parser
 result = chain.invoke({'topic':'black hole'})
 print(result)
 chain.get_graph().print_ascii()
+
+
+# BELOW IS A GRAPHICAL REPRESENTATION OF THE WORKFLOW STEPWISE.
+
+#       +-------------+      
+#       | PromptInput |
+#       +-------------+
+#              *
+#              *
+#              *
+#     +----------------+
+#     | PromptTemplate |
+#     +----------------+
+#              *
+#              *
+#              *
+# +------------------------+
+# | ChatGoogleGenerativeAI |
+# +------------------------+
+#              *
+#              *
+#              *
+#     +-----------------+
+#     | StrOutputParser |
+#     +-----------------+
+#              *
+#              *
+#              *
+# +-----------------------+
+# | StrOutputParserOutput |
+# +-----------------------+
+#              *
+#              *
+#              *
+#     +----------------+
+#     | PromptTemplate |
+#     +----------------+
+#              *
+#              *
+#              *
+# +------------------------+
+# | ChatGoogleGenerativeAI |
+# +------------------------+
+#              *
+#              *
+#              *
+#              *
+#              *
+# +-----------------------+
+# | StrOutputParserOutput |
+# +-----------------------+
