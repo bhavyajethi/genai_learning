@@ -34,10 +34,10 @@ parallel = RunnableParallel(
     }
 )
 
-merge = prompt3 | model1 | parser
+# merge = prompt3 | model1 | parser
 
 # CAN BE ANY MODEL
-# merge = prompt3 | model2 | parser
+merge = prompt3 | model2 | parser
 
 chain = parallel | merge
 
