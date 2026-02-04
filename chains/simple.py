@@ -2,7 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.output_parsers import StructuredOutputParser, ResponseSchema
+# from langchain_core.output_parsers import StructuredOutputParser, ResponseSchema
 
 
 load_dotenv()
@@ -25,6 +25,36 @@ result = chain.invoke({'topic':'football'})
 print("This is the stroutput parser result", result)
 
 chain.get_graph().print_ascii()
+
+
+# BELOW IS A GRAPHICAL REPRESENTATION OF THE WORKFLOW 
+#       +-------------+      
+#       | PromptInput |
+#       +-------------+
+#              *
+#              *
+#              *
+#     +----------------+
+#     | PromptTemplate |
+#     +----------------+
+#              *
+#              *
+#              *
+# +------------------------+
+# | ChatGoogleGenerativeAI |
+# +------------------------+
+#              *
+#              *
+#              *
+#     +-----------------+
+#     | StrOutputParser |
+#     +-----------------+
+#              *
+#              *
+#              *
+# +-----------------------+
+# | StrOutputParserOutput |
+# +-----------------------+
 
 
 
